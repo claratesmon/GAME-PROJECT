@@ -32,13 +32,20 @@
 
 body {
     
-    background-image: var(--gradientTwo); 
+    background-image: var(--gradientTwo);
+    background-repeat: no-repeat; 
+    max-height: 1080px;
     
 }
 
+#game-board {
+    z-index: 1;
+}
+
+
+
 .score-lives-container {
     display: flex;
-    
     justify-content: space-between;
     align-content: center;
     padding: 1.5em;
@@ -65,9 +72,7 @@ h3 {
     font-size: 4rem;
     margin-top: 0.1em;
     font-weight: 900;
-    color: rgb(43, 43, 86);
-    
-    
+    color: rgb(43, 43, 86);   
 
 }
 
@@ -99,7 +104,8 @@ h3 {
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
-    visibility: hidden;
+    /* visibility: hidden; */
+    z-index: 2;
     
     
 }
@@ -112,18 +118,18 @@ h3 {
     flex-direction: column;
     align-items: center;
     bottom: 0;
-    height: 50vh;
+    height: 40vh;
     width: 100vw;
-    opacity: 0.5;  
+    opacity: 0.8;  
     border-radius: 2em 2em 0 0;
 
 
 }
 
 #start-button {
-    margin-bottom: 7em;
-    width: 8em;
-    height: 3em;
+    margin-bottom: 1.5em;
+    width: 7em;
+    height: 2em;
     border: 0.2em solid rgb(115, 78, 200);
     font-size: 1.2em;
     border-radius: 1em;
@@ -137,41 +143,40 @@ h3 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 1.1em;
+    font-size: 1em;
 }
-
-
 
 #game-board {
-     
-    
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    /* max-height: 1500px; */
 }
 
+
 #buttons-container {
-    height: 90vh;
+    width: 100vw;
     display: flex;
     align-items: flex-end;
     justify-content: space-around;
      
 }
 
-
-
 .buttons{
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     list-style-type: none;
-    margin-bottom: 3em;
     width: 70vw;
+    z-index: 1;
+    margin-bottom: 1.2em;
     
     
 }
 .button-red {
     width: 9em;
     height: 2em;
-    background-color: rgb(73, 70, 66);
-    margin-bottom: 4em;
+    background-color: rgb(73, 70, 66);  
     border-radius: 1em;
     
 
@@ -179,16 +184,14 @@ h3 {
 .button-orange {
     width: 9em;
     height: 2em;
-    background-color: rgb(73, 70, 66);
-    margin-bottom: 4em;
+    background-color: rgb(73, 70, 66);   
     border-radius: 1em;
 
 }
 .button-yellow {
     width: 9em;
     height: 2em;
-    background-color: rgb(73, 70, 66);
-    margin-bottom: 4em;
+    background-color: rgb(73, 70, 66); 
     border-radius: 1em;
 
 }
@@ -196,7 +199,7 @@ h3 {
     width: 9em;
     height: 2em;
     background-color: rgb(73, 70, 66);
-    margin-bottom: 4em;
+    
     border-radius: 1em;
 
 }
@@ -204,7 +207,7 @@ h3 {
     width: 9em;
     height: 2em;
     background-color: rgb(73, 70, 66);
-    margin-bottom: 4em;
+    
     border-radius: 1em;
 
 }
@@ -212,15 +215,16 @@ h3 {
     width: 9em;
     height: 2em;
     background-color: rgb(73, 70, 66);
-    margin-bottom: 4em;
+    
     border-radius: 1em;
 
 }
 
 #falling-area {
+    width: 100vw;
     display: flex;
-    align-items: flex-start;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
     
 }
 
@@ -230,4 +234,57 @@ h3 {
     align-items: start;
     list-style-type: none;
     width: 70vw;
+    height: 90vh;
 }
+
+.piece-red {
+    width: 9em;
+    height: 2em;
+    background-color: rgb(73, 70, 66);
+    margin-bottom: 4em;
+    border-radius: 1em;
+    margin-top: 0em;
+    
+
+}
+.piece-orange {
+    width: 9em;
+    height: 2em;
+    background-color: rgb(73, 70, 66);
+    margin-bottom: 4em;
+    border-radius: 1em;
+
+}
+.piece-yellow {
+    width: 9em;
+    height: 2em;
+    background-color: rgb(73, 70, 66);
+    margin-bottom: 4em;
+    border-radius: 1em;
+
+}
+.piece-green {
+    width: 9em;
+    height: 2em;
+    background-color: rgb(73, 70, 66);
+    margin-bottom: 4em;
+    border-radius: 1em;
+
+}
+.piece-blue {
+    width: 9em;
+    height: 2em;
+    background-color: rgb(73, 70, 66);
+    margin-bottom: 4em;
+    border-radius: 1em;
+
+}
+.piece-purple {
+    width: 9em;
+    height: 2em;
+    background-color: rgb(73, 70, 66);
+    margin-bottom: 4em;
+    border-radius: 1em;
+
+}
+

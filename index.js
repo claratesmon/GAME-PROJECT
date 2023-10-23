@@ -1,8 +1,25 @@
 const gameOne = new Game ();
 const playerOne = new Player();
 
-let playerOnePositionX = playerOne.positionX
-let playerOnePositionY = playerOne.positionY
+const gameBody = document.querySelector(".body")
+
+const gameHeight = gameBody.clientHeight
+
+
+
+
+
+let pieceRedSpeed = Math.random();
+let pieceOrangeSpeed = Math.random();
+let pieceYellowSpeed = Math.random();
+let pieceGreenSpeed = Math.random();
+let pieceBlueSpeed = Math.random();
+let piecePurpleSpeed = Math.random();
+
+let gameLoopID;
+let frameCount = 0;
+
+gameOne.gameOver = false
 
 
 
@@ -13,37 +30,68 @@ document.querySelector(".buttons")
 let scoreCount = gameOne.score
 document.querySelector(".score-count").innerText = scoreCount
 
-const intervalID = setInterval(() => {
 
-    if (scoreCount >= 3000) {
-        clearInterval(intervalID)
-    } 
-    scoreCount += 5;
-    
-    document.querySelector(".score-count").innerText = scoreCount
-    
 
-    
-}, 2000);
+setTimeout (()=> {
+    const intervalID = setInterval(() => {
 
-setTimeout(() => {
-    console.log(scoreCount)
-}, 3000);
+        if (scoreCount >= 1000) {
+            clearInterval(intervalID)
+        } 
+        scoreCount += 5;
+        
+        document.querySelector(".score-count").innerText = scoreCount
+        
+    }, 1000);
 
-let gameLoopID;
-let frameCount = 0;
+}, 2000)
+
+
+
+const redPiece = document.querySelector(".piece-red");
+const orangePiece = document.querySelector(".piece-orange");
+
+
+let positionRedPiece = gameOne.pieceRedPosition;
+let positionOrangePiece = gameOne.pieceOrangePosition;
+
+function pieceFall() {    
+    positionRedPiece += pieceRedSpeed;
+    positionOrangePiece += pieceOrangeSpeed;
+    gameOne.positionYellowPiece += 0;
+    gameOne.positionGreenPiece += 0;
+    gameOne.positionBluePiece += 0;
+    gameOne.positionPurplePiece += 0;
+
+    redPiece.style.marginTop = `${positionRedPiece}em`;
+    orangePiece.style.marginTop = `${positionOrangePiece}em`;
+
+    if (positionRedPiece === 40) {
+        positionRedPiece += 0
+    }
+}
+
+
+
+pieceFall()
+
+
 
 function gameLoop() {
-    frameCount ++;
-
+    
     
     if(frameCount % 100 === 0){
        // addEnemy(); // adding the enemy to the html and also to the array of enemies
     }
-    // Update game state
-    // We add here all the functions like checkforCollissions, checkIfGameIsOver....
-    // Render game
+   
     if(!gameOne.gameOver){
+        //pieceFall();
+        frameCount ++;
         gameLoopID = requestAnimationFrame(gameLoop);
     }
+
+    
 }
+
+gameLoop()
+
