@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Open+Sans:wght@300&family=Poppins:wght@200;400&family=Roboto&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins'
+}
+
+:root {
+    --gradientOne: linear-gradient(
+        rgb(186, 210, 163),
+        rgb(113, 139, 174),
+        rgb(126, 101, 151),
+        rgb(103, 92, 117)
+    );
+
+    --gradientTwo: linear-gradient(
+        rgb(125, 152, 182),
+        rgb(88, 92, 128),
+        rgb(46, 46, 82),
+        rgb(23, 30, 37)  
+    );
+
+    --gradientThree: linear-gradient(
+        rgb(224, 199, 138),
+        rgb(158, 84, 84),
+        rgb(95, 60, 89),
+        rgb(43, 31, 48)
+    );
+}
+
+body {
+    
+    background-image: var(--gradientTwo); 
+    
+}
+
+.score-lives-container {
+    display: flex;
+    
+    justify-content: space-between;
+    align-content: center;
+    padding: 1.5em;
+    
+}
+
+.score {  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 0.7em;
+    width: 15vw;
+    
+}
+
+h3 {
+    color: aliceblue;
+    
+}
+
+#intro-title {
+    font-size: 4rem;
+    margin-top: 0.1em;
+    font-weight: 900;
+    color: rgb(43, 43, 86);
+    
+    
+
+}
+
+.score-count {
+    font-size: 1.5em;
+    color: aliceblue;
+}
+
+.lives-count {
+    font-size: 1.5em;
+    color: aliceblue;
+}
+
+.lives {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 0.7em;
+    width: 15vw;
+
+}
+
+.intro-container {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    visibility: hidden;
+    
+    
+}
+
+.intro {
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    bottom: 0;
+    height: 50vh;
+    width: 100vw;
+    opacity: 0.5;  
+    border-radius: 2em 2em 0 0;
+
+
+}
+
+#start-button {
+    margin-bottom: 7em;
+    width: 8em;
+    height: 3em;
+    border: 0.2em solid rgb(115, 78, 200);
+    font-size: 1.2em;
+    border-radius: 1em;
+    color: rgb(42, 42, 42);
+    
+}
+
+.instructions {
+    display: flex;
+    width: 50vw;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+
+
+#game-board {
+     
+    
+}
+
+#buttons-container {
+    height: 90vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+     
+}
+
+
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    list-style-type: none;
+    margin-bottom: 3em;
+    width: 70vw;
+    
+    
+}
+.button-red {
+    width: 9em;
+    height: 2em;
+    background-color: rgb(73, 70, 66);
+    margin-bottom: 4em;
+    border-radius: 1em;
+    
+
+}
+.button-orange {
+    width: 9em;
+    height: 2em;
+    background-color: rgb(73, 70, 66);
+    margin-bottom: 4em;
+    border-radius: 1em;
+
+}
+.button-yellow {
+    width: 9em;
+    height: 2em;
+    background-color: rgb(73, 70, 66);
+    margin-bottom: 4em;
+    border-radius: 1em;
+
+}
+.button-green {
+    width: 9em;
+    height: 2em;
+    background-color: rgb(73, 70, 66);
+    margin-bottom: 4em;
+    border-radius: 1em;
+
+}
+.button-blue {
+    width: 9em;
+    height: 2em;
+    background-color: rgb(73, 70, 66);
+    margin-bottom: 4em;
+    border-radius: 1em;
+
+}
+.button-purple {
+    width: 9em;
+    height: 2em;
+    background-color: rgb(73, 70, 66);
+    margin-bottom: 4em;
+    border-radius: 1em;
+
+}
+
+#falling-area {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    
+}
+
+.pieces {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    list-style-type: none;
+    width: 70vw;
+}
