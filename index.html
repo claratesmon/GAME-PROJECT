@@ -10,9 +10,9 @@
 
 <body class="body">
 
-  
 
-    </div>
+
+    </div class="game-info">
     <div class="score-lives-container">
         <div class="score">
             <h3>SCORE</h3>
@@ -34,43 +34,45 @@
                         Press the correct key when each piece falls in its button.
                     </p>
                 </div>
-    
+
                 <button id="start-button">START</button>
             </div>
-        <div id="falling-area">
-            <ul class="pieces">
-                <li class="piece-red"></li>
-                <li class="piece-orange"></li>
-                <li class="piece-yellow"></li>
-                <li class="piece-green"></li>
-                <li class="piece-blue"></li>
-                <li class="piece-purple"></li>
-            </ul>
-        </div>
 
-        <div>
-            <div id="buttons-container">
-                <ul class="buttons">
-                    <li class="button-red"></li>
-                    <li class="button-orange"></li>
-                    <li class="button-yellow"></li>
-                    <li class="button-green"></li>
-                    <li class="button-blue"></li>
-                    <li class="button-purple"></li>
-                </ul>
+            <div class="buttons-pieces">
+                
+                <div id="falling-area">
+                    <ul class="pieces">
+                        <li class="piece-red"></li>
+                        <li class="piece-orange"></li>
+                        <li class="piece-yellow"></li>
+                        <li class="piece-green"></li>
+                        <li class="piece-blue"></li>
+                        <li class="piece-purple"></li>
+                    </ul>
+                
+                    <div id="buttons-container">
+                        <ul class="buttons">
+                            <li class="button-red"></li>
+                            <li class="button-orange"></li>
+                            <li class="button-yellow"></li>
+                            <li class="button-green"></li>
+                            <li class="button-blue"></li>
+                            <li class="button-purple"></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="player"></div>
+                </div>
             </div>
+
         </div>
 
-        <div>
-            <div class="player"></div>
-        </div>
 
-    </div>
-
-
-    <script src="game.js"></script>
-    <script src="player.js"></script>
-    <script src="index.js"></script>
+        <script src="game.js"></script>
+        <script src="player.js"></script>
+        <script src="index.js"></script>
 
 
 </body>
