@@ -40,6 +40,8 @@ body {
 }
 
 #game-board {
+    height: 100vh;
+    margin-top: 0px;
     z-index: 1;
 }
 
@@ -99,15 +101,9 @@ h3 {
 
 .intro-container {
     width: 100vw;
-    
-    
     margin-bottom: 0;
-    
     height: 40vh;
-    
     z-index: 2;
-    
-    
 }
 
 .intro {
@@ -123,21 +119,26 @@ h3 {
     width: 100vw;
     opacity: 0.8;  
     border-radius: 2em 2em 0 0;
-    /* visibility: hidden; */
     
-
 
 }
 
+/* .visibility-hidden {
+    visibility: hidden;
+} */
+
 #start-button {
-    margin-bottom: 6em;
+    cursor: pointer;
+    margin-bottom: 3em;
     width: 7em;
     height: 2em;
     border: 0.2em solid rgb(115, 78, 200);
     font-size: 1.2em;
     border-radius: 1em;
     color: rgb(42, 42, 42); 
+    
 }
+
 
 .instructions {
     text-align: center;
@@ -151,14 +152,17 @@ h3 {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    z-index: 1;
+    height: 80vh;
+    position: relative;
     
 }
 
 .buttons-pieces{
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; */
     height: 80vh;
     position: relative;
 }
@@ -169,7 +173,6 @@ h3 {
     align-items: flex-end;
     justify-content: space-around; 
     align-items: center;
-    
     z-index: 1; 
 }
 
@@ -225,68 +228,60 @@ h3 {
 .button-purple {
     width: 9em;
     height: 2em;
-    background-color: rgb(73, 70, 66);
-    
+    background-color: rgb(73, 70, 66);  
     border-radius: 1em;
 
 }
-.pieces {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.pieces-container {
     list-style-type: none;
     width: 70vw;
+    display: flex;
+    justify-content: space-around; 
+    align-items: start;
+    position: relative; 
     
 }
 
-.piece-red {
+.pieces{
     width: 9em;
     height: 2em;
     background-color: rgb(73, 70, 66);
-    /* margin-bottom: 4em; */
     border-radius: 1em;
-    margin-top: 0em;
+    position: absolute;
+    top: -170px;
+
+}
+
+.pieces:nth-child(1) {
+    left: 0%;
+}
+
+.pieces:nth-child(2) {
+    left: 17.6666%
+}
+
+.pieces:nth-child(3) {
+    left: 35.7%
+}
+
+.pieces:nth-child(4) {
+    left: 53.6%
     
-
-}
-.piece-orange {
-    width: 9em;
-    height: 2em;
-    background-color: rgb(73, 70, 66);
-    /* margin-bottom: 4em; */
-    border-radius: 1em;
-
-}
-.piece-yellow {
-    width: 9em;
-    height: 2em;
-    background-color: rgb(73, 70, 66);
-    /* margin-bottom: 4em; */
-    border-radius: 1em;
-
-}
-.piece-green {
-    width: 9em;
-    height: 2em;
-    background-color: rgb(73, 70, 66);
-    /* margin-bottom: 4em; */
-    border-radius: 1em;
-
-}
-.piece-blue {
-    width: 9em;
-    height: 2em;
-    background-color: rgb(73, 70, 66);
-    /* margin-bottom: 4em; */
-    border-radius: 1em;
-
-}
-.piece-purple {
-    width: 9em;
-    height: 2em;
-    background-color: rgb(73, 70, 66);
-    /* margin-bottom: 4em; */
-    border-radius: 1em;
-
 }
 
+.pieces:nth-child(5) {
+    left: 71.4%
+}
+
+.pieces:nth-child(6) {
+    right: 0%;
+}
+
+
+
+
+
+
+/*  Create a generic class for each piece */
+
+/* Pieces need to be absolute so the can fall */

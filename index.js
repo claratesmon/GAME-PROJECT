@@ -1,5 +1,6 @@
-const gameOne = new Game ();
+const gameOne = new Game();
 const playerOne = new Player();
+
 
 const gameBody = document.querySelector(".body")
 
@@ -7,90 +8,70 @@ const gameHeight = gameBody.clientHeight
 
 
 
-
-
-let pieceRedSpeed = Math.random();
-let pieceOrangeSpeed = Math.random();
-let pieceYellowSpeed = Math.random();
-let pieceGreenSpeed = Math.random();
-let pieceBlueSpeed = Math.random();
-let piecePurpleSpeed = Math.random();
-
-let gameLoopID;
-let frameCount = 0;
-
 gameOne.gameOver = false
 
-
-
 document.querySelector(".buttons")
-
-
 
 let scoreCount = gameOne.score
 document.querySelector(".score-count").innerText = scoreCount
 
+const start = document.querySelector("#start-button")
+    document.addEventListener("click",() => {
+        start.classList.add("visibility-hidden")
+    })
 
-
-setTimeout (()=> {
+setTimeout(() => {
     const intervalID = setInterval(() => {
 
         if (scoreCount >= 1000) {
             clearInterval(intervalID)
-        } 
+        }
         scoreCount += 5;
-        
+
         document.querySelector(".score-count").innerText = scoreCount
-        
+
     }, 1000);
 
 }, 2000)
 
 
+//Need to be an actual Array to be able to use forEach()
+const pieces = Array.from(document.querySelectorAll(".pieces")); // selector all to get an array (with the generic class)
 
-const redPiece = document.querySelector(".piece-red");
-const orangePiece = document.querySelector(".piece-orange");
+// forEach with the game.pieces (array) and update the top position of each element
 
 
-let positionRedPiece = gameOne.pieceRedPosition;
-let positionOrangePiece = gameOne.pieceOrangePosition;
+function updatePiecePosition(index) {
+    
+    gameOne.pieces[index].fall() // you send the piece as argument
+    pieces[index].style.top = `${gameOne.pieces[index].position}px`
 
-function pieceFall() {    
-    positionRedPiece += pieceRedSpeed;
-    positionOrangePiece += pieceOrangeSpeed;
-    gameOne.positionYellowPiece += 0;
-    gameOne.positionGreenPiece += 0;
-    gameOne.positionBluePiece += 0;
-    gameOne.positionPurplePiece += 0;
-
-    redPiece.style.marginTop = `${positionRedPiece}em`;
-    orangePiece.style.marginTop = `${positionOrangePiece}em`;
-
-    if (positionRedPiece === 40) {
-        positionRedPiece += 0
-    }
 }
 
 
-
-pieceFall()
-
-
-
+let gameLoopID;
+let frameCount = 0;
+//piece[Math.floor(Math.random()* pieces.length)]
 function gameLoop() {
+
     
-    
-    if(frameCount % 100 === 0){
-       // addEnemy(); // adding the enemy to the html and also to the array of enemies
+    const randomIndex = Math.floor(Math.random() * pieces.length);
+    pieces.forEach((piece) => {
+        
+        updatePiecePosition(piece[randomIndex])
+    })
+
+    if (frameCount % 100 === 0) {
+        // addEnemy(); // adding the enemy to the html and also to the array of enemies
     }
-   
-    if(!gameOne.gameOver){
-        //pieceFall();
-        frameCount ++;
+
+    if (!gameOne.gameOver) {
+        
+  
+        frameCount++;
         gameLoopID = requestAnimationFrame(gameLoop);
     }
 
-    
 }
 
 gameLoop()
