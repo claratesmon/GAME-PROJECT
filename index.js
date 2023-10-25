@@ -47,10 +47,9 @@ setTimeout(() => {
 const pieces = gameOne.piecesArray // selector all to get an array (with the generic class)
 
 pieces.forEach(pieceObject => {
-    for (let i = 0; i < pieces.length; i++) {
-        pieceObject.checkCollision(pieces[i])
-        console.log(pieces[i]);
-    }
+
+    pieceObject.checkCollision(pieceObject.color);
+
 });
 
 let gameLoopID;
@@ -61,13 +60,13 @@ function gameLoop() {
     // forEach with the game.pieces (array) and update the top position of each element
     // it is updated inside the fall function
     pieces.forEach((pieceObject) => {
-        
-        pieceObject.fall()
-       // pieceObject.checkCollision() 
-        
-    }) 
 
-    if (frameCount % 240 === 0) {
+        pieceObject.fall()
+        pieceObject.checkCollision()
+
+    })
+
+    /* if (frameCount % 240 === 0) {
         pieces.forEach((pieceObject) => {
             
             pieceObject.speed += Math.random() // you send the piece as argument
@@ -77,10 +76,10 @@ function gameLoop() {
     } else if (frameCount % 920 === 0) {
         pieces.forEach((pieceObject) => {
             
-            pieceObject.speed += Math.random() + 2 // you send the piece as argument
+            pieceObject.speed += Math.random() + 1 // you send the piece as argument
             // updatePiecePosition(piece)
         }) 
-    }
+    } */
 
     if (!gameOne.gameOver) {
 
@@ -91,5 +90,5 @@ function gameLoop() {
 
 }
 
-//gameLoop() 
+gameLoop()
 
