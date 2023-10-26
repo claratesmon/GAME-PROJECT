@@ -3,32 +3,55 @@ const playerOne = new Player();
 
 
 const gameBody = document.querySelector(".body")
-gameOne.gameOver = false
-
-document.querySelector(".buttons")
-
-
-const redButton = document.querySelector(".button-red")
-const orangeButton = document.querySelector(".button-orange")
-const yellowButton = document.querySelector(".button-yellow")
-const greenButton = document.querySelector(".button-green")
-const blueButton = document.querySelector(".button-blue")
-const purlpeButton = document.querySelector(".button-purple")
+const pieces = gameOne.piecesArray 
+const startBtn = document.querySelector(".start-btn")
+const introScreen = document.querySelector(".intro")
+const buttonsPlayer = document.querySelector(".buttons")
 
 
+let gameLoopID;
+let frameCount = 0;
 
+
+startBtn.addEventListener('click', () => {
+    startGame()
+})
 
 ///////////SCORE COUNT
 let scoreCount = gameOne.score
 document.querySelector(".score-count").innerText = scoreCount
 
-const start = document.querySelector("#start-button")
-document.addEventListener("click", () => {
-    start.classList.add("visibility-hidden")
-})
+function startGame(){
+    console.log("os caéis")
+    gameLoop()
+    gameOne.gameStarted = true
+    introScreen.classList.add("hidden")
+    buttonsPlayer.classList.remove("hidden")
+    
 
-setTimeout(() => {
-    const intervalID = setInterval(() => {
+}
+//Need to be an actual Array to be able to use forEach()
+/////It is an actual array without need for Array.from because it is selected (converted into an object) inside the class
+// selector all to get an array (with the generic class)
+
+pieces.forEach(pieceObject => {
+
+    pieceObject.checkCollision(pieceObject.color);
+
+});
+
+function endGame() {
+    gameOne.gameStarted === false;
+    cancelAnimationFrame(gameLoopID)
+
+}
+
+function gameLoop() {
+    // forEach with the game.pieces (array) and update the top position of each element
+    // it is updated inside the fall function
+   
+   
+    /* const intervalID = setInterval(() => {   /////SCORE-COUNT
 
         if (scoreCount >= 1000) {
             clearInterval(intervalID)
@@ -37,30 +60,10 @@ setTimeout(() => {
 
         document.querySelector(".score-count").innerText = scoreCount
 
-    }, 1000);
-
-}, 2000)
-
-
-//Need to be an actual Array to be able to use forEach()
-/////It is an actual array without need for Array.from because it is selected (converted into an object) inside the class
-const pieces = gameOne.piecesArray // selector all to get an array (with the generic class)
-
-pieces.forEach(pieceObject => {
-
-    pieceObject.checkCollision(pieceObject.color);
-
-});
-
-let gameLoopID;
-let frameCount = 0;
-
-
-function gameLoop() {
-    // forEach with the game.pieces (array) and update the top position of each element
-    // it is updated inside the fall function
+    }, 1000); */
+   
     pieces.forEach((pieceObject) => {
-
+        
         pieceObject.fall()
         pieceObject.checkCollision()
 
@@ -81,11 +84,16 @@ function gameLoop() {
         }) 
     } */
 
-    if (!gameOne.gameOver) {
-
-
+    if (gameOne.gameStarted === true) {
+        console.log(gameOne.gameStarted)
         frameCount++;
         gameLoopID = requestAnimationFrame(gameLoop);
+        
+    }
+
+    if (gameOne.checkGameOver()) {
+        endGame()
+        return;
     }
 
 }
