@@ -94,14 +94,19 @@ h3 {
 .game-board {
     height: 80vh;
     margin-top: 0px;
-    
+    z-index: 0;  
+    position: relative; 
 }
 
 .intro-container {
     width: 100vw;
     margin-bottom: 0;
-    height: 30vh;
+    /* height: 30vh; */
     
+}
+
+h1 {
+    position: absolute;
 }
 
 .intro {
@@ -142,6 +147,12 @@ h3 {
     font-size: 1em;
 }
 
+.gameOver-container {
+    width: 40%;
+    text-align: center;
+    
+}
+
 #falling-area {
     width: 100vw;
     display: flex;
@@ -150,7 +161,7 @@ h3 {
     justify-content: space-between;   
     height: 80vh;
     position: relative;
-    z-index: -2222;
+    z-index: -2;
 }
 
 .buttons-pieces{

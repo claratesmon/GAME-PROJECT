@@ -28,7 +28,11 @@
     </div>
 
     <div class="game-board">
-    
+
+        <div class="gameOver-container">
+            <h1>GAME OVER</h1>
+        </div>
+
         <div class="intro-container">
 
             <div class="intro">
@@ -43,34 +47,37 @@
                 <button class="start-btn">START</button>
 
             </div>
+        </div>
 
-            <div class="buttons-pieces">
+        
 
-                <div id="falling-area">
-                    <ul class="pieces-container">
-                        <li id="red" class="pieces"></li>
-                        <li id="orange" class="pieces"></li>
-                        <li id="yellow" class="pieces"></li>
-                        <li id="green" class="pieces"></li>
-                        <li id="blue" class="pieces"></li>
-                        <li id="purple" class="pieces"></li>
+
+        <div class="buttons-pieces">
+
+            <div id="falling-area">
+                <ul class="pieces-container">
+                    <li id="red" class="pieces"></li>
+                    <li id="orange" class="pieces"></li>
+                    <li id="yellow" class="pieces"></li>
+                    <li id="green" class="pieces"></li>
+                    <li id="blue" class="pieces"></li>
+                    <li id="purple" class="pieces"></li>
+                </ul>
+
+                <div id="buttons-container">
+                    <ul class="buttons hidden">
+                        <li class="button-red"></li>
+                        <li class="button-orange"></li>
+                        <li class="button-yellow"></li>
+                        <li class="button-green"></li>
+                        <li class="button-blue"></li>
+                        <li class="button-purple"></li>
                     </ul>
-
-                    <div id="buttons-container">
-                        <ul class="buttons hidden">
-                            <li class="button-red"></li>
-                            <li class="button-orange"></li>
-                            <li class="button-yellow"></li>
-                            <li class="button-green"></li>
-                            <li class="button-blue"></li>
-                            <li class="button-purple"></li>
-                        </ul>
-                    </div>
                 </div>
-
             </div>
 
         </div>
+
 
 
         <script src="game.js"></script>

@@ -10,9 +10,11 @@ class Piece {
 
 
     fall() {
+        const buttonElement = document.querySelector(".button-" + this.color)
+        const buttonPostionY = buttonElement.getBoundingClientRect().y
         this.position += this.speed
 
-        if (this.position > 1000) {
+        if (this.position > buttonPostionY) {
             this.position = -170;
             gameOne.lives--
         }
@@ -25,23 +27,26 @@ class Piece {
         const buttonElement = document.querySelector(".button-" + this.color)
         const buttonPostionY = buttonElement.getBoundingClientRect().y
         const piecePositionY = this.element.getBoundingClientRect().y
-
-        document.addEventListener("keypress", (event) => {
-
-            if (piecePositionY < buttonPostionY + buttonElement.clientHeight
-                && piecePositionY + this.element.clientHeight > buttonPostionY) {
-
+        
+        console.log(piecePositionY, buttonPostionY);
+        
+        if (piecePositionY < buttonPostionY + buttonElement.clientHeight
+            && piecePositionY + this.element.clientHeight > buttonPostionY) {
+           const keyManager = document.addEventListener("keypress", (event) => {
                 if (event.key === this.key) {
                     console.log("1 point");
                     this.position = -170;
                     buttonElement.style.backgroundColor = `${this.color}`
                     setTimeout(() => {
                         buttonElement.style.backgroundColor = `rgb(73, 70, 66)`
-                    }, 800);
-                    //document.removeEventListener("keypress", keyPressHandler)
-                }
-            }
-        })
+                    }, 700);
+                    
+                } 
+                
+            })
+            
+        }
+        
     }
 }
 
@@ -64,9 +69,9 @@ class Game {
     checkGameOver() {
         if (this.lives === 0) {
             return true;
-        
+
         } else {
-        return false
+            return false
         }
     }
 };
