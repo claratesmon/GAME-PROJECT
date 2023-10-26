@@ -22,11 +22,13 @@ let scoreCount = gameOne.score
 document.querySelector(".score-count").innerText = scoreCount
 
 function startGame(){
-    console.log("os caéis")
-    gameLoop()
+    
+    
     gameOne.gameStarted = true
     introScreen.classList.add("hidden")
     buttonsPlayer.classList.remove("hidden")
+    gameLoop()
+    console.log(gameOne.gameStarted)
     
 
 }
@@ -85,7 +87,7 @@ function gameLoop() {
     } */
 
     if (gameOne.gameStarted === true) {
-        console.log(gameOne.gameStarted)
+        
         frameCount++;
         gameLoopID = requestAnimationFrame(gameLoop);
         
@@ -98,5 +100,5 @@ function gameLoop() {
 
 }
 
-gameLoop()
+
 
