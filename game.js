@@ -27,26 +27,30 @@ class Piece {
         const buttonElement = document.querySelector(".button-" + this.color)
         const buttonPostionY = buttonElement.getBoundingClientRect().y
         const piecePositionY = this.element.getBoundingClientRect().y
-        
+
         console.log(piecePositionY, buttonPostionY);
-        
-        if (piecePositionY < buttonPostionY + buttonElement.clientHeight
-            && piecePositionY + this.element.clientHeight > buttonPostionY) {
-           const keyManager = document.addEventListener("keypress", (event) => {
-                if (event.key === this.key) {
-                    console.log("1 point");
-                    this.position = -170;
-                    buttonElement.style.backgroundColor = `${this.color}`
-                    setTimeout(() => {
-                        buttonElement.style.backgroundColor = `rgb(73, 70, 66)`
-                    }, 700);
-                    
-                } 
-                
+
+        {
+            document.addEventListener("keypress", (event) => {
+
+                if (piecePositionY < buttonPostionY + buttonElement.clientHeight
+                    && piecePositionY + this.element.clientHeight > buttonPostionY) {
+                        if (event.key === this.key) {
+                            console.log("1 point");
+                            this.position = -170;
+                            buttonElement.style.backgroundColor = `${this.color}`
+                            setTimeout(() => {
+                                buttonElement.style.backgroundColor = `rgb(73, 70, 66)`
+                            }, 700);
+
+                        }
+                }
+
+
             })
-            
+
         }
-        
+
     }
 }
 

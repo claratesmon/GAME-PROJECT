@@ -7,6 +7,7 @@ const pieces = gameOne.piecesArray
 const startBtn = document.querySelector(".start-btn")
 const introScreen = document.querySelector(".intro")
 const buttonsPlayer = document.querySelector(".buttons")
+const gameOverScreen = document.querySelector(".gameOver-container")
 
 
 let gameLoopID;
@@ -32,7 +33,7 @@ function startGame() {
     console.log(gameOne.gameStarted)
     const intervalID = setInterval(() => {   /////SCORE-COUNT
 
-        if (scoreCount >= 1000) {
+        if (gameOne.checkGameOver()) {
             clearInterval(intervalID)
         }
         scoreCount += 5;
@@ -56,6 +57,8 @@ pieces.forEach(pieceObject => {
 
 function endGame() {
     gameOne.gameStarted === false;
+    gameOverScreen.classList.remove("hidden")
+    clearInterval(intervalID)
     cancelAnimationFrame(gameLoopID)
 
 }
@@ -66,12 +69,10 @@ function gameLoop() {
     pieces.forEach((pieceObject) => {
 
         pieceObject.fall()
-        pieceObject.checkCollision() 
+        pieceObject.checkCollision()
 
 
     })
-
-
     /* if (frameCount % 240 === 0) {
         pieces.forEach((pieceObject) => {
             
