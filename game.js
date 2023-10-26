@@ -28,28 +28,29 @@ class Piece {
         const buttonPostionY = buttonElement.getBoundingClientRect().y
         const piecePositionY = this.element.getBoundingClientRect().y
 
-        const keyListener = document.addEventListener("keypress", (event) => {
+       /*  const keyListener = document.addEventListener("keypress", (event) => {
             if (piecePositionY < buttonPostionY + buttonElement.clientHeight
                 && piecePositionY + this.element.clientHeight > buttonPostionY) {
-    
+
                 console.log("PIECE POSITION: ", piecePositionY, "BUTTON POSITION: ", buttonPostionY);
                 if (event.key === this.key) {
                     console.log("1 point");
-                    document.removeEventListener("keypress",keyListener)
+                    document.removeEventListener("keypress", keyListener)
                     this.position = -170;
                     buttonElement.style.backgroundColor = `${this.color}`
                     setTimeout(() => {
                         buttonElement.style.backgroundColor = `rgb(73, 70, 66)`
                     }, 700);
-    
+
                 }
-    
+
             }
-    
+
         })
-        console.log(piecePositionY);
+        console.log(piecePositionY); */
     }
 }
+
 
 class Game {
     constructor() {

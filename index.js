@@ -18,6 +18,33 @@ startBtn.addEventListener('click', () => {
     startGame()
 })
 
+const keyListener = (event) => {
+    
+    pieces.forEach(pieceObject => {
+        const buttonElement = document.querySelector(".button-" + pieceObject.color)
+        const buttonPostionY = buttonElement.getBoundingClientRect().y
+        const piecePositionY = pieceObject.element.getBoundingClientRect().y
+        if (piecePositionY < buttonPostionY + buttonElement.clientHeight
+            && piecePositionY + pieceObject.element.clientHeight > buttonPostionY) {
+                
+                console.log("PIECE POSITION: ", piecePositionY, "BUTTON POSITION: ", buttonPostionY);
+                if (event.key === pieceObject.key) {
+                    console.log("1 point");
+                    document.removeEventListener("keypress", keyListener);
+                    pieceObject.position = -170;
+                    buttonElement.style.backgroundColor = `${pieceObject.color}`;
+                    setTimeout(() => {
+                        buttonElement.style.backgroundColor = `rgb(73, 70, 66)`;
+                        document.addEventListener("keypress", keyListener);
+                }, 700);
+                
+            }
+            
+        }
+        
+    });
+};
+document.addEventListener("keypress", keyListener);
 
 ///////////SCORE COUNT
 let scoreCount = gameOne.score
@@ -69,7 +96,7 @@ function gameLoop() {
 
         pieceObject.checkCollision()
         pieceObject.fall()
-        
+
 
     })
     /* if (frameCount % 240 === 0) {
