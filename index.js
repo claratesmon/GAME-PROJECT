@@ -48,17 +48,16 @@ function startGame() {
 /////It is an actual array without need for Array.from because it is selected (converted into an object) inside the class
 // selector all to get an array (with the generic class)
 
-pieces.forEach(pieceObject => {
+/* pieces.forEach(pieceObject => {
 
     pieceObject.checkCollision(pieceObject.color);
     //document.removeEventListener("keypress", keyManager)
 
-});
+}); */
 
 function endGame() {
     gameOne.gameStarted === false;
     gameOverScreen.classList.remove("hidden")
-    clearInterval(intervalID)
     cancelAnimationFrame(gameLoopID)
 
 }
@@ -68,9 +67,9 @@ function gameLoop() {
     // it is updated inside the fall function
     pieces.forEach((pieceObject) => {
 
-        pieceObject.fall()
         pieceObject.checkCollision()
-
+        pieceObject.fall()
+        
 
     })
     /* if (frameCount % 240 === 0) {
