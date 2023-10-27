@@ -9,46 +9,33 @@ class Piece {
 
 
 
-    fall() {
-        const buttonElement = document.querySelector(".button-" + this.color)
-        const buttonPostionY = buttonElement.getBoundingClientRect().y
-        this.position += this.speed
+piecesReset() {
+    this.position = -170
+    this.element.style.top = `${this.position}px`
+ };
 
-        if (this.position > buttonPostionY) {
-            this.position = -170;
-            gameOne.lives--
-        }
-        this.element.style.top = `${this.position}px`
-        document.querySelector(".lives-count").innerText = gameOne.lives
+
+fall() {
+    const buttonElement = document.querySelector(".button-" + this.color)
+    const buttonPositionY = buttonElement.getBoundingClientRect().y
+    this.position += this.speed
+
+    if (this.position > buttonPositionY) {
+        this.position = -170;
+        gameOne.lives--
     }
+    this.element.style.top = `${this.position}px`
+    document.querySelector(".lives-count").innerText = gameOne.lives
+}
 
-    checkCollision() {
+checkCollision() {
 
-        const buttonElement = document.querySelector(".button-" + this.color)
-        const buttonPostionY = buttonElement.getBoundingClientRect().y
-        const piecePositionY = this.element.getBoundingClientRect().y
+    const buttonElement = document.querySelector(".button-" + this.color)
+    const buttonPositionY = buttonElement.getBoundingClientRect().y
+    const piecePositionY = this.element.getBoundingClientRect().y
 
-       /*  const keyListener = document.addEventListener("keypress", (event) => {
-            if (piecePositionY < buttonPostionY + buttonElement.clientHeight
-                && piecePositionY + this.element.clientHeight > buttonPostionY) {
 
-                console.log("PIECE POSITION: ", piecePositionY, "BUTTON POSITION: ", buttonPostionY);
-                if (event.key === this.key) {
-                    console.log("1 point");
-                    document.removeEventListener("keypress", keyListener)
-                    this.position = -170;
-                    buttonElement.style.backgroundColor = `${this.color}`
-                    setTimeout(() => {
-                        buttonElement.style.backgroundColor = `rgb(73, 70, 66)`
-                    }, 700);
-
-                }
-
-            }
-
-        })
-        console.log(piecePositionY); */
-    }
+}
 }
 
 
