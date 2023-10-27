@@ -1,17 +1,17 @@
 class Piece {
     constructor(color, key) {
         this.color = color,
-            this.position = -170,
-            this.speed = Math.random() * (0.9 - 0.5 + 1) + 0.5
+        this.position = -170,
+        this.speed = Math.random() * (0.9 - 0.5 + 1) + 0.5
         this.element = document.querySelector(`#${color}`)
         this.key = key
+        this.initialPosition = -170;
     }
 
 
 
-piecesReset() {
-    
-    this.position = -170
+piecesReset() { 
+    this.position = -170;
     this.element.style.top = `${this.position}px`
 }; 
 

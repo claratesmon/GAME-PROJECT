@@ -4,7 +4,7 @@ const playerOne = new Player();
 const bgSong = new Audio("./audio/Background Music Doraemon-[AudioTrimmer.com].mp3");
 
 
-
+let piecesSpeed = gameOne.speed
 let scoreCount = gameOne.score
 let livesCount = gameOne.lives
 const gameBody = document.querySelector(".body")
@@ -16,6 +16,7 @@ const gameOverScreen = document.querySelector(".gameOver-container")
 const xButton = document.querySelector("#X")
 const restartBtn = document.querySelector("#restart-btn")
 const background = document.querySelector(":root")
+let piecesPositionReset = -170 + Math.random() * (0.9 - 0.5 + 1) + 0.5
 
 let gameIsOver = false
 let gameLoopID;
@@ -134,7 +135,6 @@ function gameLoop() {
         } */
 
     if (gameOne.gameStarted === true) {
-
         frameCount++;
         gameLoopID = requestAnimationFrame(gameLoop);
 
@@ -156,19 +156,19 @@ function endGame() {
 }
 
 function restartGame() {
-    gameOverScreen.classList.add("hidden")
+    
+    pieces.forEach(pieceObject => {
+        pieceObject.piecesReset()
+        console.log(pieceObject.position)
+    });
     livesCount = 5
     gameIsOver = false
     scoreCount = 0
     gameOne.gameStarted = true
-    gameLoopID = null
+    
     gameLoop()
-    pieces.forEach(pieceObject => {
-        pieceObject.piecesReset()
-    });
     document.querySelector(".score-count").innerText = scoreCount;
     document.querySelector(".lives-count").innerText = livesCount;
 
 }
-
 
