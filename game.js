@@ -10,9 +10,12 @@ class Piece {
 
 
 piecesReset() {
+    
     this.position = -170
     this.element.style.top = `${this.position}px`
- };
+}; 
+
+
 
 
 fall() {
@@ -29,12 +32,9 @@ fall() {
 }
 
 checkCollision() {
-
     const buttonElement = document.querySelector(".button-" + this.color)
     const buttonPositionY = buttonElement.getBoundingClientRect().y
     const piecePositionY = this.element.getBoundingClientRect().y
-
-
 }
 }
 

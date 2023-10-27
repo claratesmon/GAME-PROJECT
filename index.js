@@ -1,6 +1,10 @@
 const gameOne = new Game();
 const playerOne = new Player();
 
+const bgSong = new Audio("./audio/Background Music Doraemon-[AudioTrimmer.com].mp3");
+
+
+
 let scoreCount = gameOne.score
 let livesCount = gameOne.lives
 const gameBody = document.querySelector(".body")
@@ -11,6 +15,7 @@ const buttonsPlayer = document.querySelector(".buttons")
 const gameOverScreen = document.querySelector(".gameOver-container")
 const xButton = document.querySelector("#X")
 const restartBtn = document.querySelector("#restart-btn")
+const background = document.querySelector(":root")
 
 let gameIsOver = false
 let gameLoopID;
@@ -19,40 +24,45 @@ let frameCount = 0;
 
 startBtn.addEventListener('click', () => {
     startGame()
+    bgSong.play()
     gameOverScreen.classList.add("hidden")
 })
 
 xButton.addEventListener("click", () => {
     introScreen.classList.remove("hidden")
     gameOverScreen.classList.add("hidden")
+    scoreCount = 0
     pieces.forEach(pieceObject => {
         pieceObject.piecesReset()
+
     });
     buttonsPlayer.classList.add("hidden")
-    gameOne.score = 0
+
 
 })
 
 restartBtn.addEventListener('click', () => {
+    scoreCount = 0
     if (gameIsOver === true) {
         restartGame()
     }
     gameOverScreen.classList.add("hidden")
-    
+    document.querySelector(".score-count").innerText = scoreCount;
+    document.querySelector(".lives-count").innerText = livesCount;
 })
 
 const keyListener = (event) => {
 
     pieces.forEach(pieceObject => {
         const buttonElement = document.querySelector(".button-" + pieceObject.color)
-        const buttonPostionY = buttonElement.getBoundingClientRect().y
+        const buttonPositionY = buttonElement.getBoundingClientRect().y
         const piecePositionY = pieceObject.element.getBoundingClientRect().y
-        if (piecePositionY < buttonPostionY + buttonElement.clientHeight
-            && piecePositionY + pieceObject.element.clientHeight > buttonPostionY) {
+        if (piecePositionY < buttonPositionY + buttonElement.clientHeight
+            && piecePositionY + pieceObject.element.clientHeight > buttonPositionY) {
 
-            console.log("PIECE POSITION: ", piecePositionY, "BUTTON POSITION: ", buttonPostionY);
+
             if (event.key === pieceObject.key) {
-                console.log("1 point");
+
                 document.removeEventListener("keypress", keyListener);
                 pieceObject.position = -170;
                 buttonElement.style.backgroundColor = `${pieceObject.color}`;
@@ -79,7 +89,7 @@ function startGame() {
     introScreen.classList.add("hidden")
     buttonsPlayer.classList.remove("hidden")
     gameLoop()
-    console.log(gameOne.gameStarted)
+
     const intervalID = setInterval(() => {   /////SCORE-COUNT
 
         if (gameOne.checkGameOver()) {
@@ -97,12 +107,7 @@ function startGame() {
 /////It is an actual array without need for Array.from because it is selected (converted into an object) inside the class
 // selector all to get an array (with the generic class)
 
-
 function gameLoop() {
-    // forEach with the game.pieces (array) and update the top position of each element
-    // it is updated inside the fall function
-
-
     pieces.forEach((pieceObject) => {
 
         pieceObject.checkCollision()
@@ -111,20 +116,22 @@ function gameLoop() {
 
     gameOverScreen.classList.add("hidden")
 
-    /* if (frameCount % 240 === 0) {
+    if (frameCount % 780 === 0) {
         pieces.forEach((pieceObject) => {
-            
-            pieceObject.speed += Math.random() // you send the piece as argument
-            // updatePiecePosition(piece)
-        }) 
-        
-    } else if (frameCount % 920 === 0) {
-        pieces.forEach((pieceObject) => {
-            
-            pieceObject.speed += Math.random() + 1 // you send the piece as argument
-            // updatePiecePosition(piece)
-        }) 
-    } */
+            console.log(pieceObject.speed)
+            pieceObject.speed += Math.random()
+            //gameBody.style.backgroundImage = 
+        })
+    }
+
+
+    /* else if (frameCount % 720 === 0) {
+            pieces.forEach((pieceObject) => {
+                
+                pieceObject.speed += Math.random() + 1
+                
+            }) 
+        } */
 
     if (gameOne.gameStarted === true) {
 
@@ -143,12 +150,10 @@ function gameLoop() {
 
 function endGame() {
     gameOne.gameStarted = false;
+    gameIsOver = true
     gameOverScreen.classList.remove("hidden")
     cancelAnimationFrame(gameLoopID)
-
 }
-
-
 
 function restartGame() {
     gameOverScreen.classList.add("hidden")
@@ -163,7 +168,6 @@ function restartGame() {
     });
     document.querySelector(".score-count").innerText = scoreCount;
     document.querySelector(".lives-count").innerText = livesCount;
-
 
 }
 
