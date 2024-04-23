@@ -3,7 +3,7 @@
 ## Project idea
 
 The main idea for the project is for it to become a game that provides a "space" to put your mind off other matters and take a visual rest, as well as keeping the challenging nature of games.
-It's graphics and mechanics are designed to target all audiences, as colors and design are picked based on general human responses to certain colors and shapes, and the game theme does not have a background narrative or context.
+
 
 ## Image of project plan
 
