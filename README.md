@@ -1,4 +1,4 @@
-# TYPE HERO
+# TYPEDANCE
 
 ## Project idea
 
